@@ -1,0 +1,96 @@
+<ion-view view-title="Product">
+    <ion-pane ng-controller="ProductController as vm">
+        <ion-content> 
+         <div class="row">
+            <div class="col">
+                <label class="item item-input">
+                    <i class="icon ion-search placeholder-icon"></i><input type="text"  placeholder="Search" ng-model="Query">
+                </label>   
+            </div>
+            <div class="col"></div>
+            <div class="col" align="right"> <ion-button ng-click="vm.showAddProductModal()" class="right button button-icon icon ion-plus"></ion-button></div>
+        </div>
+        
+         <div class ="list">
+                 <ion-item class=item >
+                       <div class="row" >                       
+                        <div class="col col-50"><b>Product</b></div>
+                          <div class="col"><b>Stock</b></div>
+                        <div class="col item item-icon-right"><b>Edit</b></div> 
+               
+                    </div>
+                </ion-item>
+                                  
+                <ion-item class=item ng-repeat="b in vm.products | filter: Query" >
+                    <div class="row" > 
+                              
+                        <div  class="col col-50 item item-icon-left">{{ b._id}}</div>
+                         <div  class="col" >{{ b.StockInHand}}</div>
+                        <div class="col item item-icon-right">
+                                <img src="img/edit.jpg" ng-click="vm.showEditProductModal(b)" height="18" width="18">                             
+                        </div> 
+
+                       
+                    </div>
+                </ion-item>
+             
+             
+        
+        </ion-content>
+        </ion-pane>
+
+    <script id="add-or-edit-product.html" type="text/ng-template">
+    <ion-modal-view>
+    <ion-header-bar class="neevheaders" >
+    <h1 class="title" Style="color:#FFFFFF;">{{action}} Product</h1> 
+    <div class="buttons">
+    <button ng-hide="isAdd" ng-click="deleteProduct(product)" class="button button-icon icon ion-trash-a"></button>
+    </div>
+    </ion-header-bar>
+    <ion-content>
+    
+         <div class ="list">
+            <div class="row">
+                <div class="col col-25"><label class="item-input"> Product </div> 
+                <div class="col col-75" ng-if="isAdd == false " >
+                    <input type="text" placeholder="Name" ng-model="product._id" disabled = true>
+                </div>
+                <div class="col col-75" ng-if="isAdd == true " >
+                    <input type="text" placeholder="Name" ng-model="product._id">
+                </div>
+                
+            </div>  
+            <div class="row">
+                <div class="col col-25"><label class="item-input"> Stock </div> 
+                <div class="col col-75"><input type="text" placeholder="StockInHand" ng-model="product.StockInHand" value = 0></div>
+                
+            </div>  
+            <div class="row">
+                <div class="col col-25"><label class="item-input"> Price </div> 
+                <div class="col col-75"><input type="text" placeholder="Price" ng-model="product.Price" value = 0 ></div>
+                
+            </div>  
+            <div class="row">
+                <div class="col col-25"><label class="item-input"> Type </div> 
+                <div class="col col-75"><input type="text" placeholder="Product Type" ng-model="product.producttype"  ></div>
+                
+            </div> 
+            <div class="row">
+                <div class="col col-25"><label class="item-input"> Size </div> 
+                <div class="col col-75"><input type="text" placeholder="Size" ng-model="product.productsize"  ></div>
+              
+            </div> 
+        </div>
+    <div class="row">
+    <div class="col">
+    <ion-button ng-click="saveProdTran(product)" class="button button-block neevheaders">Save</ion-button></div>
+    <div class="col">
+    <ion-button ng-click="vm.cancel()"class="button button-block neevheaders">Cancel</ion-button></div>
+    </div>
+    </ion-content>
+    </ion-modal-view>
+    </script> 
+
+   
+
+</ion-view>

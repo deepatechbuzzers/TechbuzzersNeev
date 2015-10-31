@@ -1,0 +1,11 @@
+{
+    "jscodehints.detectedExclusions": [
+        "C:/HackathonNew/newappold/www/js/InventoryController.js",
+        "C:/HackathonNew/Neevapp/platforms/android/cordova/lib/retry.js",
+        "C:/HackathonNew/Neevapp/plugins/cordova-plugin-console/tests/tests.js",
+        "C:/HackathonNew/Neevapp/www/js/app.js",
+        "C:/HackathonNew/Neevapp/www/js/ChartController.js",
+        "C:/HackathonNew/Neevapp/www/js/DatabaseService.js",
+        "C:/Hack/23rd OCT/BuildProcessTemplates/Neevapp/Neevapp/platforms/android/build/intermediates/assets/debug/www/plugins/cordova-plugin-whitelist/whitelist.js"
+    ]
+}

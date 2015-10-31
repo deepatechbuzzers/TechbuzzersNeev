@@ -1,0 +1,110 @@
+    <ion-view view-title="Raw materials">
+
+      <ion-content ng-controller="drawVisualization" >  
+          
+          <div  class="button-bar">
+                  <a class="button" onclick="changeData('flgchart')">Stock
+                  </a>
+                  <a class="button" onclick="changeData('flgprice')">
+                    Price
+                  </a>
+                  <a class="button" onclick="changeData('flgpercent')">
+                  Percentage
+                  </a>
+                </div>
+            <div class="card">   
+            <div class="item item-text-wrap"  ng-show="flgchart" class="neevheaders" >
+                <canvas  id="line" class="chart chart-pie"  data="data" labels="labels" chart-legend="true" series="series" chart-options="{showTooltips: true}" height="70" >                      </canvas>
+            </div>
+             <div class="item item-text-wrap"  ng-show="flgprice"  >
+                <canvas   id="line" class="chart chart-pie "  data="price" labels="labels" chart-legend="true" series="series" chart-options="{showTooltips: true}" height="70" >                   </canvas>
+            </div>  
+               <div class="item item-text-wrap"  ng-show="flgpercent"  >
+                   <canvas   id="line" class="chart chart-pie"  data="percent" labels="labels" chart-legend="true" series="series" chart-options="{showTooltips: true}" height="70">                    </canvas>
+            </div>
+          </div>
+
+         <div>
+              <i style="height: 43px; text-align: center; text-overflow: ellipsis; white-space: nowrap; font-size: 17px; font-weight: 500; line-height: 44px;display:block;"><a>Export Report</a></i>
+         </div>
+          
+          <ion-list ng-controller='displayExportData'>
+            <ion-item style="color:#000000;">
+                <div ng-init="init()">
+
+                    <i class="fa fa-toggle-on active fa-3x"
+                       ng-if="statusPDF === true"
+                       ng-click="changeStatusPDF()" style="font-size: 130%;">
+                    </i>
+                    <i class="fa fa-toggle-on fa-rotate-180 inactive fa-3x"
+                       ng-if="statusPDF === false"
+                       ng-click="changeStatusPDF()" style="font-size: 130%;">
+                    </i> &nbsp; PDF Mode                         
+                    <!--<button  class="fa fa-arrow-down" ng-if="statusPDF === true" ng-hide="false">-->
+                    <a href="#" role="button" ng-if="statusPDF === true" ng-hide="false" class="fa fa-arrow-down" onClick ="$('#exporttable').tableExport({type: 'pdf', escape: 'false'});"></a>  
+                    <!--</button> -->
+
+
+                </div>
+            </ion-item>
+            <ion-item style="color:#000000">
+
+                <div ng-init="init()">
+
+                    <i class="fa fa-toggle-on active fa-3x"
+                       ng-if="statusExcel === true"
+                       ng-click="changeStatusExcel();" style="font-size: 130%;">
+                    </i>
+                    <i class="fa fa-toggle-on fa-rotate-180 inactive fa-3x"
+                       ng-if="statusExcel === false"
+                       ng-click="changeStatusExcel();" style="font-size: 130%;">
+                    </i>&nbsp; Excel Mode 
+
+                    <a href="#" role="button" ng-if="statusExcel === true" ng-hide="false" class="fa fa-arrow-down" onClick ="$('#exporttable').tableExport({type: 'excel', escape: 'false'});"> </a> 
+                </div>
+            </ion-item>
+            <ion-item style="color:#000000">
+                <div ng-init="init()">
+
+                    <i class="fa fa-toggle-on active fa-3x"
+                       ng-if="statusCSV === true"
+                       ng-click="changeStatusCSV();" style="font-size: 130%;">
+                    </i>  
+                    <i class="fa fa-toggle-on fa-rotate-180 inactive fa-3x"
+                       ng-if="statusCSV === false"
+                       ng-click="changeStatusCSV();" style="font-size: 130%;">
+                    </i>&nbsp;  CSV Mode
+
+                    <a href="#" role="button" ng-if="statusCSV === true" ng-hide="false" class="fa fa-arrow-down" onClick ="$('#exporttable').tableExport({type: 'csv', escape: 'false'});"> </a>  
+
+                </div>
+            </ion-item>
+
+                
+            <ion-item >
+                <table width="100%" id ="exporttable" style="visibility:hidden" >
+                    <thead>
+                        <tr style="height:20px;">
+                            <th>Material Name</th>
+                            <th>Stock in Hand</th>
+                            <th>Date</th>
+                            <th>Transaction Type</th>
+                          <th>User</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr ng-repeat="expdata in exportdatas">
+                            <td>{{expdata._id}}</td>
+                          <td>{{expdata.StockInHand}}</td>
+                            <td>{{expdata.Date| date:'MM/dd/yy'}}</td>
+                            <td>{{expdata.type}}</td>
+                             <td>{{expdata.User}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ion-item>
+        </ion-list>
+        </ion-content>
+
+    </ion-view>

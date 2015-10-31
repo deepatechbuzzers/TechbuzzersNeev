@@ -1,0 +1,37 @@
+[
+      {
+        "name": "Deepa",
+        "password": "Deepa",
+        "role": "ADMIN"
+      },
+      {
+        "name": "Mythreyi",
+        "password": "Mythreyi",
+        "role": "ADMIN"
+      },
+      {
+        "name": "Vajra",
+        "password": "Vajra",
+        "role": "USER"
+      },
+      {
+        "name": "Jyothi",
+        "password": "Jyothi",
+        "role": "TL"
+      },
+      {
+        "name": "Arul",
+        "password": "Arul",
+        "role": "USER"
+      },
+      {
+        "name": "Hema",
+        "password": "Hema",
+        "role": "TL"
+      },
+     {
+        "name": "Nagma",
+        "password": "Nagma",
+        "role": "USER"
+      }
+]

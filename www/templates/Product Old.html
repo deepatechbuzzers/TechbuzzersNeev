@@ -1,0 +1,86 @@
+<ion-view view-title="Product">
+<ion-pane ng-controller="ProductController as vm">
+   
+    <ion-content class="has-header"> 
+        <div class="row #c8e6c9 green lighten-4">
+        <div class="col col-center #c8e6c9 green lighten-4"><label class="item item-input"><input type="text"  placeholder="product" ng-model="Query"/></label>            </div>
+
+       
+        <ion-button ng-click="vm.showAddproductModal()" class="right button button-icon icon ion-plus">Add</ion-button>
+        </div>
+        </div>
+
+        <div class =list>
+          <ion-list>
+              <div class="row" > 
+                    <div class="col col-center"></div>
+                    <div class="col col-center">Quantity</div>
+                    <div class="col col-center">Product</div>
+                   <!-- <div class="col col-center s5 #66bb6a green lighten-1">Price</div> -->
+              </div>
+                  <!--<div style="float: right">{{ b.Date | date:"dd MMMM yyyy" }}</div>-->
+                         </div>
+                <ion-item class=item ng-repeat="b in vm.products | filter: Query" >
+                    <div class="row" > 
+                      <div class="col col-center">
+                        <img src="img/Sales.jpg" ng-click="vm.showTranModal(b,'Sales')" height="40%" width="40%"></img> 
+                         <img src="img/Returns.png" ng-click="vm.showTranModal(b,'Returns')" height="40%" width="40%"></img>
+                       </div>
+                      
+                      <div class="col col-left">{{ b.doc.Details[0].StockInHand }} </div>
+                      <div style="flex-wrap: wrap;" class="col" >{{ b.id}}</div>
+                    <!--<div class="col col-center">{{ b.Price }}</div> -->
+                  <!--<div style="float: right">{{ b.Date | date:"dd MMMM yyyy" }}</div>-->
+                  </div>
+                </ion-item>
+             
+          </ion-list>
+        </div>
+        </Table>
+    </ion-content>
+     <ion-footer-bar class="bar-stable">
+      <!--<h1 class="title"> Inventory  </h1> -->
+        
+      
+    </ion-footer-bar>
+  </ion-pane>
+
+  <script id="add-or-edit-product.html" type="text/ng-template">
+    <ion-modal-view>
+      <ion-header-bar class="neevheaders">
+        <h1 class="title" Style="color:#FFFFFF;">{{ action }}</h1> 
+       <!-- <div class="buttons">
+        <button ng-hide="isAdd" ng-click="deleteproduct()" class="button button-icon icon ion-trash-a"></button>
+        </div> -->
+      </ion-header-bar>
+      <ion-content>
+        <div class="list list-inset">
+                    <label class="item-input"> Product  &nbsp;&nbsp;&nbsp     : &nbsp
+           <input type="text" placeholder="Name" ng-model="tran.productNm" disabled = true>
+        
+          </label>
+          <label class="item-input"> Quantity  &nbsp;&nbsp  : &nbsp
+          <input type="text" placeholder="Quantity" ng-model="tran.Quantity" value = 0>
+          </label>
+          <div ng-if="action == 'Receive'">
+          <label class="item-input"> Price   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp   : &nbsp
+          <input type="text" placeholder="Price" ng-model="tran.Price" value = 0 >
+          </label>
+          </div>
+          <label class="item-input">  Date  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp  : &nbsp
+          <input type="date" placeholder="date" ng-model="tran.Date" value = date >
+          </label>
+        </div>
+        <div class="row">
+          <div class="col">
+          <ion-button ng-click="saveTran(tran)" class="button button-block neevheaders">Save</ion-button></div>
+          <div class="col">
+           <ion-button ng-click="vm.cancel()"class="button button-block neevheaders">Cancel</ion-button></div>
+        </div>
+      </ion-content>
+    </ion-modal-view>
+  </script> 
+
+   
+
+</ion-view>

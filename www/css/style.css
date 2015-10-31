@@ -1,0 +1,42 @@
+
+.active, .inactive {font-size:40px;cursor:pointer;}
+.active, .inactive {font-size:40px;cursor:pointer;}
+i.active { color: #5cb85c}
+i.inactive {color: #d9534f}
+
+a {
+  color: #000000;
+  text-decoration: none; /* no underline */
+}
+.neevheaders{
+  background-color:#F55701;
+  color: #ffffff;
+  text-decoration: none; /* no underline */
+}
+
+.neevheaders .list {
+  background-color:  #F55701;
+}
+
+.neevheaders .item, .my-menu .item-content, .my-menu .item-complex{
+  /* background-color: #F55701; */
+  color: #FFFFFF;
+}
+
+.neevheaders a.item-content:hover{
+  background-color: #AB1A0A;
+ color: #fff;
+}
+.neevheaders a.item-content{
+  /*background-color: #AB1A0A;*/
+ color: #fff;
+}
+.neevheaders item-content:hover{
+  background-color: #AB1A0A;
+ color: #fff;
+}
+.neevpopup{
+  background-color:#FFFFFF;
+  color: #000000;
+ 
+}

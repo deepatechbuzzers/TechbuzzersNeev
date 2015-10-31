@@ -1,0 +1,33 @@
+<ion-view view-title="Dashboard">
+    <ion-content ng-controller="OverviewController as vm">
+        <div class="button-bar">
+            <button class="button button-assertive fa fa-calendar " ng-click="getDate()">&nbsp; &nbsp;Today</button>
+            <button class="button button-assertive fa fa-calendar " ng-click="showAddDateModal()">&nbsp; &nbsp;Custom</button>
+        </div>
+        <div class ="list">
+              <a class="item item-thumbnail-left" href="#/app/dashboard/">
+              <img ng-src="img/inventory.jpg" height="18" width ="18"> <h2>Inventory</h2><p>{{stock}}</p>
+              <span class="badge badge-assertive"> Rs &nbsp; {{price}}</span>
+          </a>
+          <a class="item item-thumbnail-left" href="#/app/dashboard/">
+              <img ng-src="img/salesimage.png" height="18" width ="18"> <h2>Sales</h2><p>{{Salesstock}}</p>
+              <span class="badge badge-assertive"> Rs &nbsp; {{Salesprice}}</span>
+          </a>
+          <a class="item item-thumbnail-left" href="#">
+              <img ng-src="img/transit.jpg" height="18" width ="18"> <h2>In Transit</h2>
+              <p></p>
+          </a>
+          <a class="item item-thumbnail-left" href="#">
+              <img ng-src="img/personnel.jpg" height="18" width ="18"> <p>Personnel</p>
+          </a>
+           <a class="item item-thumbnail-left" href="#">
+              <img ng-src="img/returned.jpg" height="18" width ="18"> <h2>Returned</h2>
+              <p>2</p>
+            <span class="badge badge-assertive"> Rs &nbsp;1900 </span>
+          </a>
+           
+    </div>
+         
+    </ion-content>
+</ion-view>
+

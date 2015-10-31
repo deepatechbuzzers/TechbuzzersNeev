@@ -1,0 +1,89 @@
+<ion-view view-title="Material">
+    <ion-pane ng-controller="OverviewController as vm">
+   
+        <ion-content> 
+        <div class="row">
+            <div class="col">
+                <label class="item item-input">
+                    <i class="icon ion-search placeholder-icon"></i><input type="text"  placeholder="Search" ng-model="Query">
+                </label>   
+            </div>
+            <div class="col"></div>
+            <div class="col" align="right"> <ion-button ng-click="vm.showAddMaterialModal()" class="right button button-icon icon ion-plus"></ion-button></div>
+        </div>
+
+            <div class ="list" ng-scrollable =true>
+                
+                <ion-item class=item >
+                       <div class="row" >                       
+                        <div class="col col-50"><b>Material</b></div>
+                          <div class="col"><b>Stock</b></div>
+                        <div class="col item item-icon-right"><b>Edit</b></div> 
+               
+                    </div>
+                </ion-item>
+                                  
+                <ion-item class="item item" ng-repeat="b in vm.materials | filter: Query" >
+                    <div class="row" > 
+                              
+                    <div  class="col col-50 item item-icon-left">{{ b._id}}</div>
+                    <div class="col item item-icon-right">{{ b.StockInHand }} </div>
+                    <div class="col item item-icon-right"><img src="img/edit.jpg" ng-click="vm.showEditMaterialModal(b,'Material')" height="18" width="18"></div> 
+                    </div>
+                </ion-item>
+             
+                </ion-list>
+            </div>
+        
+        </ion-content>
+        </ion-pane>
+
+    <script id="add-or-edit-material.html" type="text/ng-template">
+    <ion-modal-view>
+    <ion-header-bar class="neevheaders" >
+    <h1 class="title" Style="color:#FFFFFF;">{{action}} Material</h1> 
+    <div class="buttons">
+    <button ng-hide="isAdd" ng-click="deleteMaterial(material)" class="button button-icon icon ion-trash-a"></button>
+    </div>
+    </ion-header-bar>
+    <ion-content>
+        <div class ="list">
+            <div class="row">
+                <div class="col col-25"><label class="item-input"> Material </div> 
+                <div class="col col-75" ng-if="isAdd == false " >
+                    <input type="text" placeholder="Name" ng-model="material._id" disabled = true>
+                </div>
+                <div class="col col-75" ng-if="isAdd == true " >
+                    <input type="text" placeholder="Name of Material" ng-model="material._id">
+                </div>
+                
+            </div>  
+            <div class="row">
+                <div class="col col-25"><label class="item-input"> Stock </div> 
+                <div class="col col-75"><input type="text" placeholder="Number of Items" ng-model="material.StockInHand" value = 0></div>
+                
+            </div>  
+            <div class="row">
+                <div class="col col-25"><label class="item-input"> Price </div> 
+                <div class="col col-75"><input type="text" placeholder="Unit Price in Rs." ng-model="material.Price" value = 0 ></div>
+                
+            </div>  
+            <div class="row">
+                <div class="col col-25"><label class="item-input"> ROL </div> 
+                <div class="col col-75"><input type="text" placeholder="ReOrder Level" ng-model="material.ROL"  ></div>
+                
+            </div> 
+        </div>
+    <div class="row">
+    <div class="col">
+    <ion-button ng-click="saveMaterial(material)" class="button button-block neevheaders">Save</ion-button></div>
+    <div class="col">
+    <ion-button ng-click="vm.cancel()"class="button button-block neevheaders">Cancel</ion-button></div>
+    </div>
+    </ion-content>
+    </ion-modal-view>
+    </script> 
+
+   
+
+</ion-view>

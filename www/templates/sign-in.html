@@ -1,0 +1,28 @@
+<ion-view view-title="Login">
+  <ion-content  class="padding" ng-controller= "SignInCtrl">
+     
+          <div class="item item-body">
+               
+                <img src="img/logo.jpg" class="full-image"> 
+
+            </div> 
+
+      <div class="list card padding" style="background-color:#fff;">
+        <label class="item item-input">
+          <span class="input-label">UserName</span>
+          <input type="text" ng-model="user.username">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" ng-model="user.password">
+        </label>
+      </div>
+        <button ng-click="signIn()" class="button button-block button-assertive activated"> 
+                 Sign In 
+        </button> 
+
+        
+      
+  
+  </ion-content>
+</ion-view>

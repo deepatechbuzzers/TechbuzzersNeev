@@ -1,0 +1,111 @@
+<ion-view view-title="Issue/Receive Inventory">
+    <ion-pane ng-controller="OverviewController as vm">
+   
+        <ion-content class="has-header"> 
+            
+
+            <div class ="list" ng-scrollbar>
+                <ion-list>
+                      <ion-item class=item >
+                     <div class="row" >                       
+                        <div class="col col-50" ><b>Material</b></div>
+                          <div class="col col-20"><b>Stock</b></div>
+                         <div class="col col-30 col-right "><b>Action</b></div> 
+               
+                    </div>
+                       </ion-item>
+                                             
+                <ion-item class=item ng-repeat="b in vm.materials | filter: Query" >
+                    <div class="row" > 
+                              
+                        <div class="col col-50" >{{ b._id}}</div>
+                        <div class="col col-left">{{ b.StockInHand }} </div>
+                        <div class="col col-right">
+                                <img src="img/Receive.jpg" ng-click="vm.showTranModal(b,'Receive')" height="10%" width="10%"> 
+                            <img src="img/Issue.png" ng-click="vm.showTranModal(b,'Issue')" height="10%" width="10%">
+                        </div> 
+                       
+                    </div>
+                </ion-item>
+             
+                </ion-list>
+            </div>
+        
+        </ion-content>
+        </ion-pane>
+        <script type="text/javascript">
+         window.onload = function() {
+            alert(vm);
+            vm.GetAllMaterials();};
+        </script>
+
+
+    <script id="add-or-edit-material.html" type="text/ng-template">
+    <ion-modal-view>
+    <ion-header-bar class="neevheaders" >
+    <h1 class="title" Style="color:#FFFFFF;">{{action}}</h1> 
+    <!-- <div class="buttons">
+    <button ng-hide="isAdd" ng-click="deleteMaterial()" class="button button-icon icon ion-trash-a"></button>
+    </div> -->
+    </ion-header-bar>
+    <ion-content>
+    
+        <div class ="list">
+            <div class="row">
+                <div class="col col-25"><label class="item-input"> Material </div> 
+                <div class="col col-100">
+                    <input type="text" placeholder="Name" ng-model="tran.MaterialNm" disabled = {{disabled}}>
+                </div>
+                
+            </div>  
+         <div class="row">
+                <div class="col col-25"><label class="item-input"> Quantity </div> 
+                <div class="col col-100">
+                    <input type="text" placeholder="Quantity" ng-model="tran.Quantity" value=0>
+                </div>
+                
+            </div>  
+   
+     
+    <div ng-if="action == 'Receive'">
+         <div class="row">
+                <div class="col col-25"><label class="item-input"> Price </div> 
+                <div class="col col-100">
+                    <input type="text" placeholder="Price" ng-model="tran.Price" value=0>
+                </div>
+                
+            </div>  
+    </div>
+         <div class="row">
+                <div class="col col-25"><label class="item-input"> Date </div> 
+                <div class="col col-100">
+                    <input type="text" placeholder="Date" ng-model="tran.Date" value=date>
+                </div>
+                
+            </div>  
+      <div ng-if="action == 'Issue'">
+              <div class="row">
+                <div class="col col-25"><label class="item-input"> Issued To </div> 
+                <div class="col col-100">
+                    <input type="text" placeholder="Issued to" ng-model="tran.IssuedTo">
+                </div>
+                
+            </div>  
+    
+          </div>
+    </div>
+             
+    <div class="row">
+    <div class="col">
+    <ion-button ng-click="saveTran(tran)" class="button button-block neevheaders">Save</ion-button></div>
+    <div class="col">
+    <ion-button ng-click="vm.cancel()"class="button button-block neevheaders">Cancel</ion-button></div>
+    </div>
+    </ion-content>
+    </ion-modal-view>
+
+    </script> 
+
+   
+
+</ion-view>

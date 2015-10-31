@@ -1,0 +1,10 @@
+_db.get(material).then(function(doc) {
+                var rawmaterial = doc.MaterialNm;
+                    var quantity = doc.quantity;
+
+
+filter:type='Order' |
+
+{{ vm.date | date : format : timezone}}
+
+data-ng-init="material.type = 'Order'"

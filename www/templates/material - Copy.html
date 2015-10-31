@@ -1,0 +1,72 @@
+<ion-view view-title="Material">
+    <ion-pane ng-controller="OverviewController as vm">
+   
+        <ion-content class="has-header"> 
+            
+
+            <div class ="list">
+                <ion-list>
+                     <div class="row" > 
+                        <div class="col col-center"></div>
+                        <div class="col col-center">Stock In Hand</div>
+                        <div class="col col-center">Material</div>
+               
+                    </div>
+                                  
+                <ion-item class=item ng-repeat="b in vm.materials | filter: Query" >
+                    <div class="row" > 
+                           <div class="col col-center">
+                                <img src="img/Receive.jpg" ng-click="vm.showTranModal(b,'Receive')" height="10%" width="10%"> 
+                            <img src="img/Issue.png" ng-click="vm.showTranModal(b,'Issue')" height="10%" width="10%">
+                        </div>          
+                        <div class="col col-left">{{ b.StockInHand }} </div>
+                        <div style="flex-wrap: wrap;" class="col" >{{ b._id}}</div>
+                       
+                    </div>
+                </ion-item>
+             
+                </ion-list>
+            </div>
+        
+        </ion-content>
+        </ion-pane>
+
+    <script id="add-or-edit-material.html" type="text/ng-template">
+    <ion-modal-view>
+    <ion-header-bar class="neevheaders" >
+    <h1 class="title" Style="color:#FFFFFF;">{{action}}</h1> 
+    <!-- <div class="buttons">
+    <button ng-hide="isAdd" ng-click="deleteMaterial()" class="button button-icon icon ion-trash-a"></button>
+    </div> -->
+    </ion-header-bar>
+    <ion-content>
+    <div class="list list-inset neevpopup">
+    <label class="item-input"> Material  &nbsp;&nbsp;&nbsp     : &nbsp
+        <input type="text" placeholder="Name" ng-model="tran.MaterialNm" disabled = true>
+      
+    </label>
+     <label class="item-input" > Quantity  &nbsp;&nbsp  : &nbsp
+    <input type="text" placeholder="Quantity" ng-model="tran.Quantity" value = 0>
+    </label>
+    <div ng-if="action == 'Receive'">
+    <label class="item-input"> Price   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp   : &nbsp
+    <input type="text" placeholder="Price" ng-model="tran.Price" value = 0 >
+    </label>
+    </div>
+    <label class="item-input">  Date  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp  : &nbsp
+    <input type="date" placeholder="date" ng-model="tran.Date" value = date >
+    </label>
+    </div>
+    <div class="row">
+    <div class="col">
+    <ion-button ng-click="saveTran(tran)" class="button button-block neevheaders">Save</ion-button></div>
+    <div class="col">
+    <ion-button ng-click="vm.cancel()"class="button button-block neevheaders">Cancel</ion-button></div>
+    </div>
+    </ion-content>
+    </ion-modal-view>
+    </script> 
+
+   
+
+</ion-view>

@@ -1,2 +1,0 @@
-# TechbuzzersNeev
-Techbuzzers - Neev app

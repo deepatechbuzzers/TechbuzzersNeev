@@ -1,0 +1,87 @@
+<ion-view view-title="Material">
+<ion-pane ng-controller="OverviewController as vm">
+   
+    <ion-content class="has-header"> 
+        <div class="row">
+        <div class="col col-center"><label class="item item-input">
+<i class="icon ion-search placeholder-icon"></i><input type="search"  placeholder="material" ng-model="Query"/>
+               </label>
+             
+            
+             
+            </div>
+       <div class="buttons">
+        <ion-button ng-click="vm.showAddMaterialModal()" class="right button button-icon icon ion-plus">Add</ion-button>
+        </div>
+        </div>
+        <div class =list>
+          <ion-list show-delete="shouldShowDelete" can-swipe="listCanSwipe">
+              <div class="row responsive-sm"> 
+                   <div class="col"></div>
+                    <div class="col">Material</div>
+                    <div class="col">Quantity</div>
+                    <div class="col">Price</div>
+                    <div class="col">Date</div>
+              </div>
+               
+                         
+                <ion-item class=item ng-repeat="b in vm.materials  |  filter:type='Order' | filter : Query " ng-click="vm.showEditMaterialModal(b)">
+                    <div class="row responsive-sm" style="flex-wrap: wrap;"> 
+                    <div class="col">{{ b.MaterialNm }}</div>
+                    <div class="col">{{ b.Quantity }}</div>
+                    <div class="col">{{ b.Price }}</div>
+                    <div class="col">{{ b.Date | date:"dd MMMM yyyy" }}</div>
+                        <ion-delete-button class="ion-minus-circled"
+                       ng-click="deleteMaterial()">
+        </ion-delete-button>
+                         </div>
+                </ion-item>
+             
+          </ion-list>
+            </div>
+        </div>
+        </Table>
+    </ion-content>
+     <ion-footer-bar class="bar-stable">
+      <!--<h1 class="title"> Inventory  </h1> -->
+        
+       </ion-footer-bar>
+ </ion-pane>
+
+  <script id="add-or-edit-material.html" type="text/ng-template">
+      
+    <ion-modal-view>
+      <ion-header-bar>
+        <h1 class="title">{{ action }} Material</h1> 
+        <div class="buttons">
+        <button ng-hide="isAdd" ng-click="deleteMaterial()" class="button button-icon icon ion-trash-a"></button>
+        </div>
+      </ion-header-bar>
+      <ion-content>
+        <div class="list list-inset">
+          <label class="item item-input">
+          <input type="text" placeholder="Name" ng-model="material.MaterialNm">
+          </label>
+          <label  class="item item-input">
+          <input  type="text" placeholder="Order" ng-model="material.type"  value = "{{Order}}">
+          </label>    
+          <label class="item item-input">
+          <input type="text" placeholder="Quantity" ng-model="material.Quantity">
+          </label>
+          <label class="item item-input">
+          <input type="text" placeholder="Price" ng-model="material.Price">
+          </label>
+          <label class="item item-input">
+          <input type="date"  ng-model="material.Date"  >
+          </label>
+        
+    
+        </div>
+        <div class="padding">
+          <button ng-click="saveMaterial()" class="button button-block button-positive activated">Save</button>
+        </div>
+      </ion-content>
+    </ion-modal-view>
+  </script> 
+</ion-view>
+

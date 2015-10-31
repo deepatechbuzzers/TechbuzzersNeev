@@ -1,0 +1,92 @@
+/* global exportdatas */
+
+<ion-view view-title="Export">
+
+    <ion-content ng-controller='displayExportData'>
+
+
+        <ion-list >
+            <ion-item style="color:#000000">
+                <div ng-init="init()">
+
+                    <i class="fa fa-toggle-on active fa-3x"
+                       ng-if="statusPDF === true"
+                       ng-click="changeStatusPDF()">
+                    </i>
+                    <i class="fa fa-toggle-on fa-rotate-180 inactive fa-3x"
+                       ng-if="statusPDF === false"
+                       ng-click="changeStatusPDF()">
+                    </i> &nbsp; PDF Mode                         
+                    <!--<button  class="fa fa-arrow-down" ng-if="statusPDF === true" ng-hide="false">-->
+                    <a href="#" role="button" ng-if="statusPDF === true" ng-hide="false" class="fa fa-arrow-down" onClick ="$('#exporttable').tableExport({type: 'pdf', escape: 'false'});"></a>  
+                    <!--</button> -->
+
+
+                </div>
+            </ion-item>
+            <ion-item style="color:#000000">
+
+                <div ng-init="init()">
+
+                    <i class="fa fa-toggle-on active fa-3x"
+                       ng-if="statusExcel === true"
+                       ng-click="changeStatusExcel();">
+                    </i>
+                    <i class="fa fa-toggle-on fa-rotate-180 inactive fa-3x"
+                       ng-if="statusExcel === false"
+                       ng-click="changeStatusExcel();">
+                    </i>&nbsp; Excel Mode 
+
+                    <a href="#" role="button" ng-if="statusExcel === true" ng-hide="false" class="fa fa-arrow-down" onClick ="$('#exporttable').tableExport({type: 'excel', escape: 'false'});"> </a> 
+                </div>
+            </ion-item>
+            <ion-item style="color:#000000">
+                <div ng-init="init()">
+
+                    <i class="fa fa-toggle-on active fa-3x"
+                       ng-if="statusCSV === true"
+                       ng-click="changeStatusCSV();">
+                    </i>  
+                    <i class="fa fa-toggle-on fa-rotate-180 inactive fa-3x"
+                       ng-if="statusCSV === false"
+                       ng-click="changeStatusCSV();">
+                    </i>&nbsp;  CSV Mode
+
+                    <a href="#" role="button" ng-if="statusCSV === true" ng-hide="false" class="fa fa-arrow-down" onClick ="$('#exporttable').tableExport({type: 'csv', escape: 'false'});"> </a>  
+
+                </div>
+            </ion-item>
+
+                
+            <ion-item >
+                <table width="100%" id ="exporttable" style="visibility:hidden" >
+                    <thead>
+                        <tr style="height:20px;">
+                            <th>Material Name</th>
+                            <th>Initial Stock</th>
+                            <th>Stock in Hand</th>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>User</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr ng-repeat="expdata in exportdatas">
+                            <td>{{expdata._id}}</td>
+                            <td>{{expdata.InitialStockLevel}}</td>
+                            <td>{{expdata.StockInHand}}</td>
+                            <td>{{expdata.Date| date:'MM/dd/yy'}}</td>
+                            <td>{{expdata.Unit}}</td>
+                            <td>{{expdata.User}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ion-item>
+
+
+        </ion-list>
+    </ion-content>
+
+</ion-view>
+

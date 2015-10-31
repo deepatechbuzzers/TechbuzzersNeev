@@ -1,0 +1,54 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="neevheaders">
+      <ion-nav-back-button style="color:#FFFFFF">
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left" >
+          <button class="button button-icon button-clear ion-navicon" menu-toggle="left" style="color:#FFFFFF"></button>
+      </ion-nav-buttons>
+      <!--<ion-nav-buttons side="left" class="neevheaders">
+          <button class="right button button-icon icon ion-plus neevheaders" ng-click="add()"  ></button>
+      </ion-nav-buttons>-->
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" >
+    
+    <ion-content class="neevheaders"  ng-controller="MenuCtrl">
+      <ion-list>
+        <!--<ion-item menu-close href="#/app/material">Issue/Receive Inventory</ion-item>-->
+         <ion-item menu-close href="#/app/AddMaterial" ng-if="userRole == 'ADMIN'|| userRole == 'TL'">
+            <i class="fa fa-bitbucket fa-2x "> </i> &nbsp; Material Master
+        </ion-item>
+
+           <ion-item menu-close href="#/app/material" ng-if="userRole == 'ADMIN'|| userRole == 'TL'">
+               <i class = "fa fa-cube fa-2x ">  </i> Issue/Receive Inventory
+           </ion-item>
+        <ion-item menu-close href="#/app/addproduct" ng-if="userRole == 'ADMIN'|| userRole == 'TL'">
+            <i class="fa fa-bitbucket fa-2x "> </i> &nbsp; Product Master
+        </ion-item>
+        <ion-item menu-close href="#/app/product" ng-if="userRole == 'ADMIN'|| userRole == 'TL'">
+            <i class="fa fa-bar-chart fa-2x"> </i> &nbsp;Sales/Returns
+        </ion-item>
+        <ion-item menu-close href="#/app/User" ng-if="userRole == 'ADMIN'">
+            <i class = "fa fa-group fa-2x"> </i>&nbsp;User Master
+        </ion-item>    
+        <ion-item menu-close href="#/app/dashboard" ng-if="userRole == 'ADMIN'|| userRole == 'TL' || userRole == 'USER'">
+            <i class="fa fa-home fa-2x"> </i>&nbsp;Dashboard
+        </ion-item>
+         <!--<ion-item menu-close href="#/app/export">Export</ion-item>-->
+        <ion-item menu-close href="#/app/settings" ng-if="userRole == 'ADMIN'">
+            <i class ="fa fa-gear fa-2x"> </i>&nbsp;Settings
+        </ion-item>
+        <ion-item menu-close ng-click="logout()">
+            <i class="fa fa-power-off fa-2x"></i> &nbsp;Logout
+
+        </ion-item>
+      </ion-list>
+        
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus> 
+
